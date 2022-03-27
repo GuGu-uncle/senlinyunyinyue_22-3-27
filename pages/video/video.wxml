@@ -1,0 +1,94 @@
+<view class="videoContainer">
+    <!-- 头部区域 -->
+    <view class="header">
+        <image src="/static/images/video/video.jpg"></image>
+        <view class="search" bindtap="toSearch">
+            搜索音乐
+        </view>
+        <image src="/static/images/logo.png"></image>
+    </view>
+    <!-- 提示登录 -->
+    <view class="tip" bindtap="toLogin" wx:if="{{!isLogin}}">
+        登录后可观看视频
+    </view>
+    <!-- 导航区域 -->
+    <scroll-view 
+        class="navScroll" 
+        scroll-x enable-flex
+        scroll-into-view="{{'scroll'+navId}}"
+        scroll-with-animation
+    >
+        <view 
+            id="{{'scroll'+item.id}}"
+            class="navItem" 
+            wx:for="{{videoGroupList}}" 
+            wx:key="id" 
+        >
+            <view 
+                class="navContent {{item.id===navId?'active':''}}"
+                bindtap="changeNav"
+                id="{{item.id}}"
+            >
+                {{item.name}}
+            </view>    
+        </view>
+    </scroll-view>
+    <!-- 视频列表区域 -->
+    <scroll-view 
+        class="videoScroll" 
+        scroll-y
+        refresher-enabled
+        refresher-threshold="3"
+        bindrefresherrefresh="handleRefresher"
+        refresher-triggered="{{isTriggered}}"
+        bindscrolltolower="handleToLower"
+    >
+        <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
+            <video
+                src="{{item.data.urlInfo.url}}"
+                bindplay="handlePlay"
+                id="{{item.id}}"
+                poster="{{item.data.coverUrl}}"
+                wx:if="{{videoId==item.id}}"
+                autoplay
+                initial-time="{{seek.id==item.id&&seek.currentTime}}"
+                object-fit="cover"
+                bindtimeupdate="handleTimeUpdate"
+                bindended="handleEnded"
+            ></video>
+            <!-- 性能优化：用image图片代替video标签 -->
+            <image 
+                src="{{item.data.coverUrl}}" 
+                id="{{item.id}}" 
+                bindtap="handlePlay"
+                wx:else
+            ></image>
+            <view class="title">{{item.data.title}}</view>
+            <view class="footer">
+                <!-- 作者 -->
+                <view class="author">
+                    <image src="{{item.data.creator.avatarUrl}}"></image>
+                    <view>{{item.data.creator.nickname}}</view>
+                </view>
+                <!-- 点赞评论更多 -->
+                <view class="operation">
+                    <view class="fabulous item">
+                        <text class="iconfont icon-xihuan"></text>
+                        <text>{{item.data.shareCount}}</text>
+                    </view>
+                    <view class="comment item">
+                        <text class="iconfont icon-liuyan"></text>
+                        <text>{{item.data.commentCount}}</text>
+                    </view>
+                    <button 
+                        class="more item"
+                        style="width:50rpx"
+                        open-type="share"
+                    >
+                        <text class="iconfont icon-androidgengduo"></text>   
+                    </button>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

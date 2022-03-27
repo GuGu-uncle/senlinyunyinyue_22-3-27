@@ -1,0 +1,114 @@
+.songDetailContainer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    height: 100vh;
+    background-color:#aaa;
+}
+/* 底座 */
+.circle{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius:50%;
+    margin:20rpx 0 -30rpx 34rpx;
+    background-color:#fff;
+    z-index:3;
+}
+/* 摇杆 */
+.needle{
+    width: 192rpx;
+    height: 274rpx;
+    margin-left:150rpx;
+    z-index:2;
+    transform-origin:40rpx 0;
+    transform:rotateZ(-30deg);
+    transition:1s linear;
+}
+.needleRotete{
+    transform:rotateZ(0deg);
+}
+/* 磁盘 */
+.discContainer{
+    position:relative;
+    top:-170rpx;
+}
+.discAnimation{
+    animation:disc 5s 1s infinite linear;
+}
+@keyframes disc{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+.disc{
+    width: 598rpx;
+    height: 598rpx;
+}
+.musicImg{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    margin:auto;
+    width: 370rpx;
+    height: 370rpx;
+    border-radius:50%;
+}
+
+
+/* 进度条控制区域 */
+.progressControl{
+    position:absolute;
+    bottom:250rpx;
+    display:flex;
+    width: 650rpx;
+    height: 60rpx;
+    justify-content:space-between;
+    align-items:center;
+}
+.progressControl text{
+    font-size:36rpx;
+}
+/*  */
+.progressControl .barControl{
+    width: 400rpx;
+    height: 4rpx;
+    background-color:#777;
+}
+/* 当前进度条 */
+.audio-currentTime-Bar{
+    position:relative;
+    height: 4rpx;
+    background-color:rgb(248, 12, 12);
+}
+/* 小圆球 */
+.audio-circle{
+    position:absolute;
+    top:-8rpx;
+    right:-10rpx;
+    width: 20rpx;
+    height: 20rpx;
+    border-radius:50%;
+    background-color:#fff;
+}
+
+
+/* 底部控制播放区域 */
+.musicControl{
+    position:absolute;
+    bottom:40rpx;
+    width: 100%;
+    display:flex;
+    border-top:1px solid #000;
+}
+.musicControl text{
+    height: 120rpx;
+    font-size:60rpx;
+    text-align:center;
+    line-height:120rpx;
+    flex-grow: 1;
+}

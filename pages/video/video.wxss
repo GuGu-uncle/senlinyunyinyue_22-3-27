@@ -1,0 +1,131 @@
+/* 头部区域 */
+.header{
+    display:flex;
+    margin:10rpx;
+}
+.header image{
+    width: 60rpx;
+    height: 60rpx;
+}
+.header .search{
+    border:1px solid #eee;
+    flex:1;
+    text-align:center;
+    color:#c43c33;
+    margin:0 20rpx;
+    line-height:60rpx;
+}
+
+/* 提示登录 */
+.tip{
+    width: 400rpx;
+    height: 60rpx;
+    font-size:40rpx;
+    text-align:center;
+    line-height:60rpx;
+    margin:300rpx auto;
+    border:1px solid black;
+}
+
+
+/* 导航区域 */
+.navScroll{
+    display:flex;
+    height: 60rpx;
+    white-space:nowrap;
+}
+.navScroll .navItem{
+    height: 60rpx;
+    font-size:28rpx;
+    line-height:60rpx;
+    padding:0 20rpx;
+}
+.navContent{
+    height: 60rpx;
+    box-sizing:border-box;
+}
+.navItem .active{
+    border-bottom:1rpx solid #c43c33;
+}
+
+
+/* 视频列表 */
+.videoScroll{
+    /* 
+        calc可以动态计算css的宽高 
+        视口单位：vw vh  1vh=1%视口高度  1vw=1%视口宽度
+        默认情况下视口高度不包含tabBar
+        运算符左右两边必须加空格，否则计算失效
+    */
+    height:calc(100vh - 142rpx);
+    /* height:calc(100vh - 100rpx);用来测试页面上拉触底 */
+}
+.videoScroll .videoItem{
+    margin:3%;
+}
+.videoScroll .videoItem video{
+    width: 100%;
+    border-radius: 10rpx;
+}
+.videoScroll .videoItem image{
+    width: 100%;
+    height: 450rpx;
+    border-radius: 10rpx;
+}
+.videoScroll .videoItem .title{
+    width: 500rpx;
+    font-size:30rpx;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+/* 视频列表底部 */
+.videoItem .footer{
+    display:flex;
+    justify-content: space-between;
+    padding:20rpx 0;
+    border-bottom:1rpx solid black
+}
+.footer .author{
+    display:flex;
+}
+.videoItem .footer image{
+    width: 80rpx;
+    height: 80rpx;
+    margin-right:20rpx;
+    border-radius:50%;
+}
+.videoItem .footer{
+    line-height:80rpx;
+}
+.footer .author view{
+    width: 250rpx;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.operation{
+    display:flex;
+    width: 280rpx;
+}
+.operation view{
+    width: 110rpx;
+}
+.item{
+    font-size:30rpx;
+}
+.iconfont{
+    font-size:36rpx;
+}
+.operation button{
+    width: 50rpx;
+    padding:0;
+    background-color:#fff;
+}
+.operation button text{
+    display:block;
+    width: 40rpx;
+    height: 84rpx;
+    line-height:84rpx;
+    /* font-size:36rpx; */
+}
